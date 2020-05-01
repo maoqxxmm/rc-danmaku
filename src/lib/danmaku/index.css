@@ -1,0 +1,12 @@
+.danmaku-wrapper {
+  position: absolute;
+  top: 100px;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.bullet-item {
+  color: white;
+}
