@@ -7,7 +7,7 @@ import { MockBullets } from "./mock/bullets";
 
 const App: React.FC = memo(() => {
   const [status, setStatus] = useState<VideoStatus>(VideoStatus.PAUSE);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [containerEl, setContainerEl] = useState<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const onPlay = useCallback(() => {
@@ -30,7 +30,7 @@ const App: React.FC = memo(() => {
 
   return (
     <div className="app">
-      <div className="video-wrap" ref={containerRef}>
+      <div className="video-wrap" ref={(el) => setContainerEl(el)}>
         <video
           ref={videoRef}
           className="video"
@@ -42,7 +42,7 @@ const App: React.FC = memo(() => {
           onPause={onPause}
         ></video>
         <Danmaku
-          containerEl={containerRef.current}
+          containerEl={containerEl}
           videoStatus={status}
           danmakuList={MockBullets}
           onClick={onClickDanmaku}

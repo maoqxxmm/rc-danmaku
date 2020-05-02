@@ -37,7 +37,9 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "@types/mockjs": "^1.0.2",
+    "classnames": "^2.2.6",
     "mockjs": "^1.1.0"
   }
 }

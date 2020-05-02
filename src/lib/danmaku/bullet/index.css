@@ -1,0 +1,8 @@
+.danmaku-bullet-item {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 5s linear;
+  color: white;
+}
