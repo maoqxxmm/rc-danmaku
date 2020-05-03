@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState, useCallback } from "react";
+import React, { memo, useState, useCallback } from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import { VideoStatus } from "./type";
@@ -8,7 +8,7 @@ import { MockBullets } from "./mock/bullets";
 const App: React.FC = memo(() => {
   const [status, setStatus] = useState<VideoStatus>(VideoStatus.PAUSE);
   const [containerEl, setContainerEl] = useState<HTMLDivElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [videoEl, setVideoEl] = useState<HTMLVideoElement | null>(null);
 
   const onPlay = useCallback(() => {
     setStatus(VideoStatus.PLAYING);
@@ -19,20 +19,20 @@ const App: React.FC = memo(() => {
   }, []);
 
   const onClickDanmaku = useCallback(() => {
-    if (videoRef.current) {
+    if (videoEl) {
       if (status === VideoStatus.PAUSE) {
-        videoRef.current.play();
+        videoEl.play();
       } else {
-        videoRef.current.pause();
+        videoEl.pause();
       }
     }
-  }, [videoRef, status]);
+  }, [videoEl, status]);
 
   return (
     <div className="app">
       <div className="video-wrap" ref={(el) => setContainerEl(el)}>
         <video
-          ref={videoRef}
+          ref={(el) => setVideoEl(el)}
           className="video"
           // Thanks to DIYgod http://dplayer.js.org/
           src="https://api.dogecloud.com/player/get.mp4?vcode=5ac682e6f8231991&userId=17&ext=.mp4"
@@ -43,6 +43,7 @@ const App: React.FC = memo(() => {
         ></video>
         <Danmaku
           containerEl={containerEl}
+          videoEl={videoEl}
           videoStatus={status}
           danmakuList={MockBullets}
           onClick={onClickDanmaku}

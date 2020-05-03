@@ -2,7 +2,9 @@ import React from "react";
 import { Track } from "../../../type";
 import { DanmakuBullet } from "../bullet";
 
-type Props = Track;
+type Props = Track & {
+  onAnimationEnd: (id: string, top: number) => void;
+};
 
 export const DanmakuTrack: React.FC<Props> = (props) => {
   return (
@@ -12,6 +14,7 @@ export const DanmakuTrack: React.FC<Props> = (props) => {
           key={bullet.id}
           bullet={bullet}
           containerWidth={props.width}
+          onAnimationEnd={props.onAnimationEnd}
         />
       ))}
     </>

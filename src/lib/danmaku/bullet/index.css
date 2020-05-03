@@ -1,8 +1,21 @@
+@keyframes danmaku {
+  from {
+    transform: translateX(100%);
+  }
+}
+
 .danmaku-bullet-item {
   display: inline-block;
   position: absolute;
   right: 0;
   transform: translateX(100%);
-  transition: transform 5s linear;
+  will-change: transform;
+  animation-name: danmaku;
+  animation-timing-function: linear;
+  animation-play-state: paused;
   color: white;
+}
+
+.playing .danmaku-bullet-item {
+  animation-play-state: running;
 }

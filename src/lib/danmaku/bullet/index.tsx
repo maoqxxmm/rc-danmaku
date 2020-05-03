@@ -1,36 +1,30 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { memo } from "react";
 import { TrackBullet } from "../../../type";
 import "./index.css";
+import { DM_ANIMATE_DURATION } from "..";
 
 interface Props {
   bullet: TrackBullet;
   containerWidth: number;
+  onAnimationEnd: (id: string, top: number) => void;
 }
 
-export const DanmakuBullet: React.FC<Props> = (props) => {
-  const [animate, setAnimate] = useState<boolean>(false);
-
-  useEffect(() => {
-    let inited = true;
-    setTimeout(() => {
-      inited && setAnimate(true);
-    }, 100);
-    return () => {
-      inited = false;
-    };
-  }, []);
-
+export const DanmakuBullet: React.FC<Props> = memo((props) => {
   return (
     <div
       className="danmaku-bullet-item"
+      data-bullet-id={props.bullet.id}
       style={{
         top: props.bullet.physic.top,
-        transform: animate
-          ? `translateX(-${props.containerWidth}px)`
-          : undefined,
+        transform: `translateX(-${props.containerWidth}px)`,
+        color: props.bullet.color ? `#${props.bullet.color.slice(2)}` : "",
+        animationDuration: `${DM_ANIMATE_DURATION}s`,
+      }}
+      onAnimationEnd={() => {
+        props.onAnimationEnd(props.bullet.id, props.bullet.physic.top);
       }}
     >
       {props.bullet.text}
     </div>
   );
-};
+});

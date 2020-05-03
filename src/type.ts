@@ -1,9 +1,10 @@
 export interface Bullet {
   id: string;
   text: string;
-  createdTime: string;
+  createdTime?: string;
   startTime: string;
   color?: string;
+  type?: number;
 }
 
 export interface BulletPhysic {
