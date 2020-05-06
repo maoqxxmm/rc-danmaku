@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import cx from "classnames";
 import { TrackBullet, BulletType } from "../../../type";
 import "./index.css";
-import { DM_ANIMATE_DURATION } from "..";
+import { DM_ANIMATE_DURATION, TRACK_OFFSET } from "..";
 
 interface Props {
   bullet: TrackBullet;
@@ -23,6 +23,8 @@ export const DanmakuBullet: React.FC<Props> = memo((props) => {
     const baseStyle = {
       color: bullet.color ? `#${bullet.color.slice(2)}` : "",
       animationDuration: `${DM_ANIMATE_DURATION}s`,
+      lineHeight: `${TRACK_OFFSET}px`,
+      opacity: 0.7,
     };
     if (bullet.type === BulletType.RIGHT) {
       return {

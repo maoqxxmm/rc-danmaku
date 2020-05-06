@@ -19,6 +19,7 @@
   animation-timing-function: linear;
   animation-play-state: paused;
   color: white;
+  font-size: 20px;
 }
 
 .danmaku-bullet-right {

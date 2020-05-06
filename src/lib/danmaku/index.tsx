@@ -37,7 +37,7 @@ export interface Tracks {
   [BulletType.BOTTOM]: BottomTrack[];
 }
 
-export const TRACK_OFFSET = 50;
+export const TRACK_OFFSET = 30;
 export const TRACK_SAFE_BORDER = 100;
 export const DM_SAFE_DISTANCE = 30;
 export const DM_ANIMATE_DURATION = 5;
