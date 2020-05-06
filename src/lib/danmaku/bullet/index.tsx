@@ -21,7 +21,7 @@ export const DanmakuBullet: React.FC<Props> = memo((props) => {
 
   const getStyle = () => {
     const baseStyle = {
-      color: bullet.color ? `#${bullet.color.slice(2)}` : "",
+      color: bullet.color,
       animationDuration: `${DM_ANIMATE_DURATION}s`,
       lineHeight: `${TRACK_OFFSET}px`,
       opacity: 0.7,
