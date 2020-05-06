@@ -93,7 +93,7 @@ export const Danmaku: React.FC<Props> = memo((props) => {
           bullets: [],
           type: BulletType.TOP,
         })),
-      [BulletType.BOTTOM]: Array(Math.floor(verticalTrackCounts / 2))
+      [BulletType.BOTTOM]: Array(Math.ceil(verticalTrackCounts / 2))
         .fill(1)
         .map((_a, index) => ({
           id: `${BulletType.BOTTOM}-${index}`,
