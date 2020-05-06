@@ -1,9 +1,9 @@
 import React from "react";
-import { Track } from "../../../type";
+import { Track, TrackBullet } from "../../../type";
 import { DanmakuBullet } from "../bullet";
 
 type Props = Track & {
-  onAnimationEnd: (id: string, top: number) => void;
+  onAnimationEnd: (bullet: TrackBullet) => void;
 };
 
 export const DanmakuTrack: React.FC<Props> = (props) => {

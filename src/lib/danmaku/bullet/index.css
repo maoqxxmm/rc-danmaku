@@ -4,16 +4,37 @@
   }
 }
 
+@keyframes danmaku-center {
+  from {
+    visibility: visible;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
 .danmaku-bullet-item {
   display: inline-block;
   position: absolute;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  color: white;
+}
+
+.danmaku-bullet-right {
   right: 0;
   transform: translateX(100%);
   will-change: transform;
   animation-name: danmaku;
-  animation-timing-function: linear;
-  animation-play-state: paused;
-  color: white;
+}
+
+.danmaku-bullet-top,
+.danmaku-bullet-bottom {
+  width: 100%;
+  text-align: center;
+  visibility: hidden;
+  will-change: visibility;
+  animation-name: danmaku-center;
 }
 
 .playing .danmaku-bullet-item {
