@@ -28,7 +28,6 @@ interface Props {
   videoEl: HTMLVideoElement | null;
   videoStatus: VideoStatus;
   danmakuList: Bullet[];
-  onClick: () => void;
 }
 
 export interface Tracks {
@@ -38,7 +37,7 @@ export interface Tracks {
 }
 
 export const TRACK_OFFSET = 30;
-export const TRACK_SAFE_BORDER = 100;
+export const TRACK_SAFE_BORDER = 30;
 export const DM_SAFE_DISTANCE = 30;
 export const DM_ANIMATE_DURATION = 5;
 
@@ -183,7 +182,6 @@ export const Danmaku: React.FC<Props> = memo((props) => {
       className={cx("danmaku-wrapper", {
         playing: props.videoStatus === VideoStatus.PLAYING,
       })}
-      onClick={props.onClick}
     >
       {renderTracks(tracks[BulletType.RIGHT])}
       {renderTracks(tracks[BulletType.TOP])}

@@ -18,16 +18,6 @@ const App: React.FC = memo(() => {
     setStatus(VideoStatus.PAUSE);
   }, []);
 
-  const onClickDanmaku = useCallback(() => {
-    if (videoEl) {
-      if (status === VideoStatus.PAUSE) {
-        videoEl.play();
-      } else {
-        videoEl.pause();
-      }
-    }
-  }, [videoEl, status]);
-
   return (
     <div className="app">
       <div className="video-wrap" ref={(el) => setContainerEl(el)}>
@@ -46,7 +36,6 @@ const App: React.FC = memo(() => {
           videoEl={videoEl}
           videoStatus={status}
           danmakuList={MockBullets}
-          onClick={onClickDanmaku}
         />
       </div>
     </div>
